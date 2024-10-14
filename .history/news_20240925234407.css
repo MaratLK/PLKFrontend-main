@@ -1,0 +1,84 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: none; /* убираем фон */
+    position: relative;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.news-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.news-content {
+    margin-top: 20px;
+    text-align: justify; /* Выровнять текст по ширине */
+    width: 100%; /* Занять всю ширину контейнера */
+    font-size: 1.1rem;
+}
+
+.news-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.news-images img {
+    width: 80%; /* Увеличение размера картинки */
+    height: auto;
+    margin-bottom: 20px;
+    display: block; /* Центрирование */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: #e0e0e0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    color: #007BFF;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-top: auto;
+}

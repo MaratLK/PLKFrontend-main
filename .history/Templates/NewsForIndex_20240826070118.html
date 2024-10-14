@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .news {
+        padding: 30px;
+        background-color: #f9f9f9;
+        text-align: center;
+      }
+
+      .news h2 {
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .news-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .news-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: calc(25% - 20px);
+        box-sizing: border-box;
+        text-align: left;
+      }
+
+      .news-card h3 {
+        margin: 0 0 10px;
+        color: #25427e;
+      }
+
+      .news-card p {
+        color: #555;
+      }
+
+      .news-card button {
+        background-color: #25427e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .news-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: calc(25% - 20px);
+        box-sizing: border-box;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .news-card:hover {
+        transform: translateY(10px) scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .news-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .news-date {
+        font-size: 0.9em;
+        color: #999;
+      }
+
+      /* Стили для модального окна */
+      .modal {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+      }
+
+      .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Стили для кнопки "Добавить новость" */
+      #add-news-btn {
+        background-color: #25427e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: inline-block;
+        margin: 20px auto;
+      }
+
+      #add-news-btn:hover {
+        background-color: #1a3362;
+      }
+
+      /* Перемещаем кнопку "Добавить новость" в правый нижний угол */
+      .fixed-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25427e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .fixed-button:hover {
+        background-color: #1a3362;
+      }
+
+      /* Стили для модального окна */
+      .modal-content {
+        background-color: #ffffff;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #25427e;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .close-btn {
+        color: #25427e;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: #1a3362;
+      }
+
+      /* Стили для элементов формы внутри модального окна */
+      #news-form label {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      #news-form input[type="text"],
+      #news-form input[type="date"],
+      #news-form textarea,
+      #news-form input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      #news-form button {
+        background-color: #25427e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+        display: block;
+      }
+
+      #news-form button:hover {
+        background-color: #1a3362;
+      }
+
+      /*еще*/
+
+      /* Стили для ссылки "Подробнее" на карточке */
+.read-more-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #25427e;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.read-more-btn:hover {
+  background-color: #1a3362;
+}
+
+/* Стили для страницы новости */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  color: #25427e;
+}
+
+.content-images img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.content-description {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #25427e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #1a3362;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <section id="news" class="news">
+      <h2>Новости</h2>
+      <div class="news-card">
+        <div class="news-header">
+          <h3>${title}</h3>
+          <span class="news-date">${new Date(date).toLocaleDateString("ru-RU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}</span>
+        </div>
+        <p>${description.substring(0, 100)}...</p> <!-- Отображаем только первые 100 символов -->
+        <a href="${pageUrl}" class="read-more-btn">Подробнее</a>
+      </div>
+    </section>
+
+    <!-- Кнопка для открытия модального окна -->
+    <button id="add-news-btn">Добавить новость</button>
+
+    <!-- Модальное окно -->
+    <div id="news-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Добавить новость</h3>
+        <form id="news-form">
+          <label for="news-title">Название:</label>
+          <input type="text" id="news-title" name="title" required />
+        
+          <label for="news-date">Дата:</label>  <!-- Добавлено поле даты -->
+          <input type="date" id="news-date" name="date" required />
+        
+          <label for="news-description">Описание:</label>
+          <textarea id="news-description" name="description" required></textarea>
+        
+          <label for="news-images">Загрузить изображения (до 5 штук):</label>
+          <input type="file" id="news-images" name="images" accept="image/*" multiple />
+        
+          <button type="submit">Добавить</button>
+        </form>
+        
+      </div>
+    </div>
+
+    <script>
+      // Получаем элементы
+const modal = document.getElementById("news-modal");
+const btn = document.getElementById("add-news-btn");
+const closeBtn = document.querySelector(".close-btn");
+const form = document.getElementById("news-form");
+const newsContainer = document.querySelector(".news-container");
+
+// Открытие модального окна и установка текущей даты
+btn.onclick = function() {
+  modal.style.display = 'block';
+
+  // Устанавливаем текущую дату в поле даты
+  const today = new Date().toISOString().split('T')[0]; // Форматируем дату в формате YYYY-MM-DD
+  document.getElementById('news-date').value = today;
+}
+
+// Закрытие модального окна
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Закрытие модального окна при клике вне его
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Добавление новой карточки при отправке формы
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Получение данных формы
+  const title = document.getElementById("news-title").value;
+  const date = document.getElementById("news-date").value;
+  const description = document.getElementById("news-description").value;
+  const images = document.getElementById("news-images").files;
+
+  // Создание новой карточки
+  const newCard = document.createElement("div");
+  newCard.classList.add("news-card");
+
+  let imagesHtml = '';
+  if (images.length > 0) {
+    for (let i = 0; i < Math.min(images.length, 5); i++) {
+      const imgURL = URL.createObjectURL(images[i]);
+      imagesHtml += `<img src="${imgURL}" alt="Новость изображение" style="max-width: 100%; margin-top: 10px;">`;
+    }
+  }
+
+  newCard.innerHTML = `
+    <div class="news-header">
+      <h3>${title}</h3>
+      <span class="news-date">${new Date(date).toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}</span>
+    </div>
+    <p>${description}</p>
+    ${imagesHtml}
+    <button class="open-modal" data-news="news1">Подробнее</button>
+  `;
+
+  // Добавление новой карточки в контейнер
+  newsContainer.appendChild(newCard);
+
+  // Закрытие модального окна и очистка формы
+  modal.style.display = "none";
+  form.reset();
+});
+
+
+//второй
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const title = document.getElementById("news-title").value;
+  const date = document.getElementById("news-date").value;
+  const description = document.getElementById("news-description").value;
+  const images = document.getElementById("news-images").files;
+
+  const pageName = `news-${Date.now()}.html`; // Имя файла страницы на основе текущего времени
+  const pageUrl = `./${pageName}`;
+
+  // Создание HTML содержимого для новой страницы
+  let imagesHtml = '';
+  if (images.length > 0) {
+    for (let i = 0; i < Math.min(images.length, 5); i++) {
+      const imgURL = URL.createObjectURL(images[i]);
+      imagesHtml += `<img src="${imgURL}" alt="Новость изображение" style="max-width: 100%; margin-top: 10px;">`;
+    }
+  }
+
+  const pageContent = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${title}</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          padding: 20px;
+          max-width: 800px;
+          margin: auto;
+          background-color: #f9f9f9;
+        }
+        h1 {
+          color: #25427e;
+        }
+        .content-images img {
+          max-width: 100%;
+          border-radius: 10px;
+          margin-bottom: 20px;
+        }
+        .content-description {
+          margin-bottom: 30px;
+          color: #555;
+        }
+        .back-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #25427e;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          text-decoration: none;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        .back-btn:hover {
+          background-color: #1a3362;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>${title}</h1>
+      <div class="content-images">
+        ${imagesHtml}
+      </div>
+      <div class="content-description">
+        <p>${description}</p>
+      </div>
+      <a href="index.html" class="back-btn">Вернуться назад</a>
+    </body>
+    </html>
+  `;
+
+  // Создание новой страницы (симуляция на стороне клиента)
+  const blob = new Blob([pageContent], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+
+  // Симуляция создания ссылки на страницу
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = pageName;
+  a.click();
+
+  // Создание новой карточки на главной странице
+  const newCard = document.createElement("div");
+  newCard.classList.add("news-card");
+
+  newCard.innerHTML = `
+    <div class="news-header">
+      <h3>${title}</h3>
+      <span class="news-date">${new Date(date).toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}</span>
+    </div>
+    <p>${description.substring(0, 100)}...</p>
+    <a href="${pageUrl}" class="read-more-btn">Подробнее</a>
+  `;
+
+  newsContainer.appendChild(newCard);
+
+  modal.style.display = "none";
+  form.reset();
+});
+
+    </script>
+  </body>
+</html>

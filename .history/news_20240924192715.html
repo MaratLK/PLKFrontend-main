@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали новости</title>
+    <link rel="stylesheet" href="StyleMain.css">
+    <style>
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #news-images img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img_prj/RealLogo.png" alt="Логотип ПЛК Транзит">
+        </div>
+    </header>
+
+    <a href="index.html" class="back-button">Назад</a>
+
+    <main id="news-details">
+        <h1 id="news-title">Заголовок новости</h1>
+        <p id="news-date">Дата публикации</p>
+        <div id="news-content">Здесь будет текст новости</div>
+        <div id="news-images">
+            <!-- Фото вставляются сюда, если есть -->
+            <img src="img_prj/example-news-image.jpg" alt="Новостное изображение">
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 ПЛК Транзит. Все права защищены.</p>
+    </footer>
+
+    <script src="newsDetails.js"></script>
+</body>
+</html>

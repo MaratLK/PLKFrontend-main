@@ -1,0 +1,91 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: none;
+    position: relative;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-title {
+    text-align: left; /* Заголовок выравнивается по левому краю */
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.news-date {
+    text-align: left;
+    width: 100%; /* Выравнивание даты по ширине заголовка */
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.news-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптация к количеству картинок */
+    gap: 20px; /* Расстояние между картинками */
+    margin-bottom: 20px;
+    width: 100%; /* Занимает всю ширину контейнера */
+}
+
+.news-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.news-content {
+    text-align: justify;
+    width: 100%;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: #e0e0e0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    color: #007BFF;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-top: auto;
+}

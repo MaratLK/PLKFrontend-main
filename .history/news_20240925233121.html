@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новость</title>
+    <link rel="stylesheet" href="StyleMain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            background: none; /* убираем фон */
+            position: relative;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        .news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center; /* Центрирование содержимого по вертикали */
+}
+
+.news-title,
+.news-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+        .news-date {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .news-images img {
+    width: 50%; /* Уменьшение размера картинки */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+        /* Стиль для кнопки назад */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: #e0e0e0;
+            background: none; /* убираем фон */
+            border: none; /* убираем бордер */
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #007BFF;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <i class="fas fa-arrow-left back-btn" onclick="goBack()"></i>
+    </header>
+
+    <div class="news-container">
+        <h1 id="news-title" class="news-title">Заголовок новости</h1>
+        <div id="news-images" class="news-images">
+            <!-- Картинки будут добавляться из JS, если они есть -->
+        </div>
+        <div id="news-content" class="news-content">
+            <!-- Текст новости будет добавляться из JS -->
+        </div>
+        <p id="news-date" class="news-date">Дата публикации</p>
+    </div>
+
+    <footer>
+        <p>© 2024 ПЛК Транзит. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script src="newsDetails.js"></script>
+</body>
+</html>

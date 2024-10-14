@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .news {
+    padding: 30px;
+    background-color: #f9f9f9;
+    text-align: center;}
+
+    .news h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    }
+
+    .news-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.news-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.news-card h3 {
+    margin: 0 0 10px;
+    color: #25427e;
+}
+
+.news-card p {
+    color: #555;
+}
+.news-card button {
+    background-color: #25427e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+    </style>
+  </head>
+  <body>
+    <section id="news" class="news">
+        <h2>Новости</h2>
+        <div class="news-container">
+            <div class="news-card">
+                <h3>Новость</h3>
+                <p>Описание</p>
+                <button class="open-modal" data-news="news1">Подробнее</button>
+            </div>
+
+            <div class="news-container">
+                <div class="news-card">
+                    <h3>Новость</h3>
+                    <p>Описание</p>
+                    <button class="open-modal" data-news="news1">Подробнее</button>
+                </div>
+                <div class="news-container">
+                    <div class="news-card">
+                        <h3>Новость</h3>
+                        <p>Описание</p>
+                        <button class="open-modal" data-news="news1">Подробнее</button>
+                    </div>
+    </section>
+  </body>
+</html>

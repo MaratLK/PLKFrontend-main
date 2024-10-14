@@ -1,0 +1,132 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-title {
+    text-align: left;
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.news-date {
+    text-align: left;
+    width: 100%;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Основное изображение */
+.main-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: #1a1a1a; /* Фон для главного изображения, если изображение меньше контейнера */
+    padding: 10px; /* Внутренние отступы для главного изображения */
+}
+
+
+.main-image {
+    width: 80%;  /* Уменьшаем размер главного изображения */
+    max-height: 450px; /* Ограничиваем высоту */
+    object-fit: contain; /* Устанавливаем изображение так, чтобы оно полностью помещалось в контейнер */
+    border-radius: 15px; /* Делаем углы слегка закругленными */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Тень вокруг главного изображения */
+    background-color: #1a1a1a; /* Задаем цвет фона для изображения */
+}
+
+/* Кнопки слайдера */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev-btn {
+    position: absolute;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.next-btn {
+    position: absolute;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+/* Миниатюры */
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Миниатюры изображений */
+.thumbnails img {
+    width: 60px; /* Уменьшаем размер миниатюр */
+    height: 60px; /* Сохраняем квадратную форму миниатюр */
+    margin-right: 10px;
+    border-radius: 5px; /* Делаем углы миниатюр слегка закругленными */
+    filter: brightness(60%); /* Затемняем миниатюры */
+    transition: all 0.3s ease; /* Плавный переход для наведения */
+}
+
+.thumbnails img:hover {
+    filter: brightness(100%); /* Убираем затемнение при наведении */
+    cursor: pointer;
+    transform: scale(1.1); /* Немного увеличиваем при наведении */
+}
+
+.news-content {
+    text-align: justify;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.prev-btn, .next-btn {
+    background: rgba(0, 0, 0, 0.5); /* Затемненный фон для кнопок */
+    color: #fff;
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 50%; /* Делаем кнопки круглыми */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8); /* Изменение фона при наведении */
+}
+

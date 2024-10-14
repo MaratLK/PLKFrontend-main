@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новость</title>
+    <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <i class="fas fa-arrow-left back-btn" onclick="goBack()"></i>
+    </header>
+
+    <div class="news-container">
+        <h1 id="news-title" class="news-title">Заголовок новости</h1>
+        <p id="news-date" class="news-date">Дата публикации</p>
+
+        <!-- Слайдер для изображений -->
+        <div class="slider">
+            <div class="main-image-container">
+                <button class="prev-btn">❮</button>
+                <img id="main-image" src="" alt="Фото" class="main-image">
+                <button class="next-btn">❯</button>
+            </div>
+
+            <!-- Миниатюры изображений -->
+            <div class="thumbnails" id="thumbnails">
+                <!-- Миниатюры будут добавлены через JS -->
+            </div>
+        </div>
+
+        <div id="news-content" class="news-content">
+            <!-- Текст новости будет добавляться через JS -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 ПЛК Транзит. Все права защищены.</p>
+    </footer>
+
+    <script src="newsDetails.js"></script>
+    <script src="slider.js"></script>
+</body>
+</html>

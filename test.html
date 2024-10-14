@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Авторизация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 350px;
+            max-width: 100%;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .form-container {
+            padding: 30px;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .form-container.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .form-container h2 {
+            margin: 0 0 15px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .toggle-btn:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="registerForm" class="form-container active">
+            <h2>Регистрация</h2>
+            <input type="text" id="firstName" placeholder="Имя">
+            <input type="text" id="lastName" placeholder="Фамилия">
+            <input type="text" id="companyName" placeholder="Компания/ИП">
+            <input type="text" id="address" placeholder="Адрес">
+            <input type="text" id="phoneNumber" placeholder="Телефон">
+            <input type="email" id="email" placeholder="Электронная почта">
+            <input type="password" id="password" placeholder="Пароль">
+            <button onclick="register()">Зарегистрироваться</button>
+            <span class="toggle-btn" onclick="toggleForms()">Уже есть аккаунт? Войти</span>
+        </div>
+
+        <div id="loginForm" class="form-container">
+            <h2>Авторизация</h2>
+            <input type="email" id="loginEmail" placeholder="Электронная почта">
+            <input type="password" id="loginPassword" placeholder="Пароль">
+            <button onclick="login()">Войти</button>
+            <span class="toggle-btn" onclick="toggleForms()">Нет аккаунта? Регистрация</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById('registerForm').classList.toggle('active');
+            document.getElementById('loginForm').classList.toggle('active');
+            document.querySelector('.container').style.transform = 
+                document.querySelector('.container').style.transform === 'scale(1.1)' 
+                ? 'scale(1)' 
+                : 'scale(1.1)';
+        }
+
+        function register() {
+            // Логика регистрации
+            alert('Регистрация успешно выполнена!');
+        }
+
+        function login() {
+            // Логика авторизации
+            alert('Авторизация успешна!');
+        }
+    </script>
+</body>
+</html>

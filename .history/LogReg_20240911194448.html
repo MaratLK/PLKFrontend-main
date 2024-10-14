@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Регистрация и Авторизация</title>
+  <link rel="stylesheet" href="StyleReg.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div id="registerForm" class="form-container active">
+      <i class="fas fa-arrow-left back-btn" onclick="goBack()"></i>
+      <h2>Регистрация</h2>
+  
+      <div class="input-group">
+        <input type="text" id="firstName" placeholder="Имя" />
+        <div id="firstNameError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="text" id="lastName" placeholder="Фамилия" />
+        <div id="lastNameError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="text" id="companyName" placeholder="Компания/ИП" />
+        <div id="companyNameError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="text" id="address" placeholder="Адрес" />
+        <div id="addressError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="text" id="phoneNumber" placeholder="Телефон" pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" title="Введите номер телефона в формате +7 (XXX) XXX-XX-XX." />
+        <div id="phoneNumberError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="email" id="email" placeholder="Электронная почта" />
+        <div id="emailError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Пароль" />
+        <div id="passwordError" class="error-message"></div>
+      </div>
+  
+      <button onclick="register()">Зарегистрироваться</button>
+      <span class="toggle-btn" onclick="toggleForms()">Уже есть аккаунт? Войти</span>
+    </div>
+  
+    <div id="loginForm" class="form-container">
+      <i class="fas fa-arrow-left back-btn" onclick="goBack()"></i>
+      <h2>Авторизация</h2>
+  
+      <div class="input-group">
+        <input type="email" id="loginEmail" placeholder="Электронная почта" />
+        <div id="loginEmailError" class="error-message"></div>
+      </div>
+  
+      <div class="input-group">
+        <input type="password" id="loginPassword" placeholder="Пароль" />
+        <div id="loginPasswordError" class="error-message"></div>
+      </div>
+  
+      <button onclick="login()">Войти</button>
+      <span class="toggle-btn" onclick="toggleForms()">Нет аккаунта? Регистрация</span>
+    </div>
+  </div>
+  <script>document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('Loaded user:', user);  // Логируем пользователя для проверки
+    updateUserInterface(user);  // Вызываем функцию обновления интерфейса
+});
+</script>
+  <script src="API.js" defer></script>
+  <script src="Validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Плавная прокрутка</title>
+    <style>
+        html{
+
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        section {
+            height: 100vh;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        nav {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+        <li><a href="#news">Новости</a></li>
+    </ul>
+</nav>
+
+<section id="services" style="background-color: lightblue;">Услуги</section>
+<section id="about" style="background-color: lightcoral;">О нас</section>
+<section id="contacts" style="background-color: lightgreen;">Контакты</section>
+<section id="news" style="background-color: lightgoldenrodyellow;">Новости</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("Скрипт загружен и работает");
+    
+        const links = document.querySelectorAll('nav a[href^="#"]');
+    
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Отменяем стандартное поведение перехода по ссылке
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth', // Плавная прокрутка
+                        block: 'start' // Прокрутка так, чтобы целевой элемент был виден с верхней части
+                    });
+                }
+            });
+        });
+    });
+    </script>
+    
+
+</body>
+</html>
